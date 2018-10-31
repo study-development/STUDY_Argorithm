@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>[%date{yyyy-MM-dd HH:mm:ss.SSS}] %-7level %cyan(%logger{20}.java) -> [%method:%line]  - %message%n</Pattern>
+        </layout>
+        <!-- layout set : https://logback.qos.ch/manual/layouts.html -->
+    </appender>
+    
+    <appender name="STDOUT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	  <file>D:/logTest/study.log</file>
+	  <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	    <fileNamePattern>${logdir}/dom.log.%d{yyyy-MM-dd}</fileNamePattern>
+	    <timeBasedFileNamingAndTriggeringPolicy
+	          class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	    </timeBasedFileNamingAndTriggeringPolicy>
+	  </rollingPolicy>
+	  <encoder>
+	    <pattern>%-5level %logger{36}.java[%M:%line] [%d{yyyy-MM-dd HH:mm:ss.SSS}] - %msg%n</pattern>
+	  </encoder>
+	</appender>
+    <logger name="argorithm" level="TRACE"/>
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="console"/>
+    </root>
+	    
+</configuration>
