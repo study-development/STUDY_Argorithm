@@ -37,9 +37,9 @@ import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class PublicDataHttpConnectTeest {
+public class dd {
 
-	final Logger log = LoggerFactory.getLogger(PublicDataHttpConnectTeest.class);
+	final Logger log = LoggerFactory.getLogger(dd.class);
 	
 //	@Before
 	public void beforeTest() throws Exception{
@@ -53,7 +53,9 @@ public class PublicDataHttpConnectTeest {
 
 		String serviceKey = "TPPjMZN%2Frx2djgOCiE6OLBOB1bbv%2B3KfxAtY3ve6wA5famTua%2Fc6vZULxBv2moCFjjg40ubcIwZA%2FhOuAeyn0w%3D%3D";
 
-		StringBuilder urlBuilder = new StringBuilder("http://openapi.airport.co.kr/service/rest/FlightScheduleList/getIflightScheduleList"); /*URL*/
+		String url2 = "https://api.airbusan.com/Interpark/avail?OriginLocation1=CJU&OriginLocation0=GMP&DepartureDate0=20181105&";
+		
+		StringBuilder urlBuilder = new StringBuilder(url2); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("schDate","UTF-8") + "=" + URLEncoder.encode("20181102", "UTF-8")); /*검색일자*/
         urlBuilder.append("&" + URLEncoder.encode("schDeptCityCode","UTF-8") + "=" + URLEncoder.encode("GMP", "UTF-8")); /*출발 도시 코드*/
         urlBuilder.append("&" + URLEncoder.encode("schArrvCityCode","UTF-8") + "=" + URLEncoder.encode("HND", "UTF-8")); /*도착 도시 코드*/

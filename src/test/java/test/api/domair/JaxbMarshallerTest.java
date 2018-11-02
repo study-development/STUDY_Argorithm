@@ -25,6 +25,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
+import javax.xml.bind.JAXBContext;
 
 import org.junit.After;
 import org.junit.Before;
@@ -35,11 +36,12 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 
 import lombok.extern.slf4j.Slf4j;
+import test.api.jaxb.domain.publicAPI.HttpResponse;
 
 @Slf4j
-public class PublicDataHttpConnectTeest {
+public class JaxbMarshallerTest {
 
-	final Logger log = LoggerFactory.getLogger(PublicDataHttpConnectTeest.class);
+	final Logger log = LoggerFactory.getLogger(JaxbMarshallerTest.class);
 	
 //	@Before
 	public void beforeTest() throws Exception{
@@ -54,10 +56,10 @@ public class PublicDataHttpConnectTeest {
 		String serviceKey = "TPPjMZN%2Frx2djgOCiE6OLBOB1bbv%2B3KfxAtY3ve6wA5famTua%2Fc6vZULxBv2moCFjjg40ubcIwZA%2FhOuAeyn0w%3D%3D";
 
 		StringBuilder urlBuilder = new StringBuilder("http://openapi.airport.co.kr/service/rest/FlightScheduleList/getIflightScheduleList"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("schDate","UTF-8") + "=" + URLEncoder.encode("20181102", "UTF-8")); /*검색일자*/
-        urlBuilder.append("&" + URLEncoder.encode("schDeptCityCode","UTF-8") + "=" + URLEncoder.encode("GMP", "UTF-8")); /*출발 도시 코드*/
-        urlBuilder.append("&" + URLEncoder.encode("schArrvCityCode","UTF-8") + "=" + URLEncoder.encode("HND", "UTF-8")); /*도착 도시 코드*/
-        urlBuilder.append("&" + URLEncoder.encode("serviceKey","UTF-8") + "=" + URLEncoder.encode(serviceKey, "UTF-8")); /*인증키*/
+        urlBuilder.append("?" + URLEncoder.encode("schDate","UTF-8") + "=" + URLEncoder.encode("20181102", "UTF-8")); /*寃��깋�씪�옄*/
+        urlBuilder.append("&" + URLEncoder.encode("schDeptCityCode","UTF-8") + "=" + URLEncoder.encode("GMP", "UTF-8")); /*異쒕컻 �룄�떆 肄붾뱶*/
+        urlBuilder.append("&" + URLEncoder.encode("schArrvCityCode","UTF-8") + "=" + URLEncoder.encode("HND", "UTF-8")); /*�룄李� �룄�떆 肄붾뱶*/
+        urlBuilder.append("&" + URLEncoder.encode("serviceKey","UTF-8") + "=" + URLEncoder.encode(serviceKey, "UTF-8")); /*�씤利앺궎*/
         
 		String apiName = "getDflightScheduleList";
 		URL url = new URL(urlBuilder.toString());
@@ -95,8 +97,13 @@ public class PublicDataHttpConnectTeest {
         	sb.append(line.trim());
         }
         
+        
         String resJsonLog = sb.toString();
         log.info(" ** KAC API CALL RES : " + resJsonLog);
+        
+        JAXBContext jaxbContext = JAXBContext.newInstance(HttpResponse.class);
+        
+        
 		log.error("********** TestCase End ********** ");
 	}
 	
@@ -107,3 +114,12 @@ public class PublicDataHttpConnectTeest {
 	}
 
 }
+
+/*
+ * 참고 URL
+ * 1.https://www.mkyong.com/java/jaxb-hello-world-example/
+ * 2.http://www.mimul.com/pebble/default/2010/03/23/1269343140000.html
+ * 3.https://www.ibm.com/support/knowledgecenter/ko/SSAW57_9.0.0/com.ibm.websphere.nd.multiplatform.doc/ae/twbs_jaxbmarshalxml.html
+ * */
+
+
