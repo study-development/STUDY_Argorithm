@@ -1,0 +1,30 @@
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:65] [2018-11-03 03:16:58.472] -  ***** Public Data API Call TEST ***** 
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:88] [2018-11-03 03:16:58.477] -  ** KAC API CALL RESOPNSE METHOD : GET
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:89] [2018-11-03 03:16:58.527] -  ** KAC API CALL RESOPNSE CODE : 200
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:90] [2018-11-03 03:16:58.528] -  ** KAC API CALL RESOPNSE STATUS : OK
+ERROR t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:100] [2018-11-03 03:16:58.532] - ********** TestCase End ********** 
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:65] [2018-11-03 03:17:52.476] -  ***** Public Data API Call TEST ***** 
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:88] [2018-11-03 03:17:52.481] -  ** KAC API CALL RESOPNSE METHOD : GET
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:89] [2018-11-03 03:17:52.529] -  ** KAC API CALL RESOPNSE CODE : 200
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:90] [2018-11-03 03:17:52.529] -  ** KAC API CALL RESOPNSE STATUS : OK
+ERROR t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:100] [2018-11-03 03:17:52.534] - ********** TestCase End ********** 
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:65] [2018-11-03 03:23:31.019] -  ***** Public Data API Call TEST ***** 
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:88] [2018-11-03 03:23:31.025] -  ** KAC API CALL RESOPNSE METHOD : GET
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:89] [2018-11-03 03:23:31.073] -  ** KAC API CALL RESOPNSE CODE : 200
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:90] [2018-11-03 03:23:31.074] -  ** KAC API CALL RESOPNSE STATUS : OK
+ERROR t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:100] [2018-11-03 03:23:31.078] - ********** TestCase End ********** 
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:65] [2018-11-03 03:23:45.568] -  ***** Public Data API Call TEST ***** 
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:88] [2018-11-03 03:23:45.572] -  ** KAC API CALL RESOPNSE METHOD : GET
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:89] [2018-11-03 03:23:45.613] -  ** KAC API CALL RESOPNSE CODE : 200
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:90] [2018-11-03 03:23:45.613] -  ** KAC API CALL RESOPNSE STATUS : OK
+ERROR t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:100] [2018-11-03 03:23:45.617] - ********** TestCase End ********** 
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:65] [2018-11-03 12:48:31.049] -  ***** Public Data API Call TEST ***** 
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:88] [2018-11-03 12:48:31.954] -  ** KAC API CALL RESOPNSE METHOD : GET
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:65] [2018-11-03 12:48:31.989] -  ***** Public Data API Call TEST ***** 
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:88] [2018-11-03 12:48:31.995] -  ** KAC API CALL RESOPNSE METHOD : GET
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:89] [2018-11-03 12:48:32.014] -  ** KAC API CALL RESOPNSE CODE : 200
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:90] [2018-11-03 12:48:32.015] -  ** KAC API CALL RESOPNSE STATUS : OK
+ERROR t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:100] [2018-11-03 12:48:32.019] - ********** TestCase End ********** 
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:89] [2018-11-03 12:48:32.974] -  ** KAC API CALL RESOPNSE CODE : 200
+INFO  t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:90] [2018-11-03 12:48:32.974] -  ** KAC API CALL RESOPNSE STATUS : OK
+ERROR t.a.d.PublicDataHttpConnectTeest.java[eastarCallTest:100] [2018-11-03 12:48:32.978] - ********** TestCase End ********** 
