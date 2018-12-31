@@ -25,6 +25,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
+import javax.xml.bind.JAXBContext;
 
 import org.junit.After;
 import org.junit.Before;
@@ -35,11 +36,12 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 
 import lombok.extern.slf4j.Slf4j;
+import test.api.jaxb.domain.publicAPI.HttpResponse;
 
 @Slf4j
-public class PublicDataHttpConnectTeest {
+public class JaxbMarshallerHttpsTest {
 
-	final Logger log = LoggerFactory.getLogger(PublicDataHttpConnectTeest.class);
+	final Logger log = LoggerFactory.getLogger(JaxbMarshallerHttpsTest.class);
 	
 //	@Before
 	public void beforeTest() throws Exception{
@@ -49,24 +51,33 @@ public class PublicDataHttpConnectTeest {
 	
 	@Test
 	public void eastarCallTest() throws Exception {
-		log.error("********** Test Case Start ********** ");
+		log.error("********** TestCase Start ********** ");
 
+//		String serviceKey = "TPPjMZN%2Frx2djgOCiE6OLBOB1bbv%2B3KfxAtY3ve6wA5famTua%2Fc6vZULxBv2moCFjjg40ubcIwZA%2FhOuAeyn0w%3D%3D";
 		String serviceKey = "TPPjMZN%2Frx2djgOCiE6OLBOB1bbv%2B3KfxAtY3ve6wA5famTua%2Fc6vZULxBv2moCFjjg40ubcIwZA%2FhOuAeyn0w%3D%3D";
+		String apiName = "FlightScheduleList/getDflightScheduleList";
+//		String apiName = "AirportCodeList/getAirportCodeList";
 
-		StringBuilder urlBuilder = new StringBuilder("https://openapi.airport.co.kr/service/rest/FlightScheduleList/getIflightScheduleList"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("schDate","UTF-8") + "=" + URLEncoder.encode("20181102", "UTF-8")); /*검색일자*/
-        urlBuilder.append("&" + URLEncoder.encode("schDeptCityCode","UTF-8") + "=" + URLEncoder.encode("GMP", "UTF-8")); /*출발 도시 코드*/
-        urlBuilder.append("&" + URLEncoder.encode("schArrvCityCode","UTF-8") + "=" + URLEncoder.encode("HND", "UTF-8")); /*도착 도시 코드*/
-        urlBuilder.append("&" + URLEncoder.encode("serviceKey","UTF-8") + "=" + URLEncoder.encode(serviceKey, "UTF-8")); /*인증키*/
+//		StringBuilder urlBuilder = new StringBuilder("https://openapi.airport.co.kr/service/rest/DflightScheduleList/getIflightScheduleList"); /*URL*/
+//		StringBuilder urlBuilder = new StringBuilder("http://openapi.airport.co.kr/service/rest/DflightScheduleList/"+apiName); /*URL*/
+		StringBuilder urlBuilder = new StringBuilder("http://openapi.airport.co.kr/service/rest/"+apiName); /*URL*/
+        urlBuilder.append("?" + URLEncoder.encode("schDate","UTF-8") + "=" + URLEncoder.encode("20181231", "UTF-8")); /*寃��깋�씪�옄*/
+        urlBuilder.append("&" + URLEncoder.encode("schDeptCityCode","UTF-8") + "=" + URLEncoder.encode("GMP", "UTF-8")); /*異쒕컻 �룄�떆 肄붾뱶*/
+        urlBuilder.append("&" + URLEncoder.encode("schArrvCityCode","UTF-8") + "=" + URLEncoder.encode("CJU", "UTF-8")); /*�룄李� �룄�떆 肄붾뱶*/
+//        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode(serviceKey, "UTF-8")); /*�씤利앺궎*/
+        urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + serviceKey); /*�씤利앺궎*/
         
-		String apiName = "getDflightScheduleList";
 		URL url = new URL(urlBuilder.toString());
 		
 		log.info(" ***** Public Data API Call TEST ***** ");
+		String url2 = "http://openapi.airport.co.kr/service/rest/AirportCodeList/getAirportCodeList?ServiceKey=TPPjMZN%2Frx2djgOCiE6OLBOB1bbv%2B3KfxAtY3ve6wA5famTua%2Fc6vZULxBv2moCFjjg40ubcIwZA%2FhOuAeyn0w%3D%3D";
 		log.info(" ** KAC "+ apiName +" REQ : " + url);
 		
+		log.info(""+url);
+		log.info(url2);
+		
 		URLConnection connection = null;
-		HttpsURLConnection httpClient = null;
+		HttpURLConnection httpClient = null;
         BufferedWriter bw = null;
         BufferedReader br = null;
         StringBuffer sb = new StringBuffer();
@@ -80,59 +91,11 @@ public class PublicDataHttpConnectTeest {
         connection.setDoInput(true);
         connection.setAllowUserInteraction(false);
         
-        httpClient = (HttpsURLConnection) connection;
+        httpClient = (HttpURLConnection) connection;
         httpClient.setRequestMethod("GET");
         httpClient.setRequestProperty("Content-Type", "application/json");
         httpClient.setReadTimeout(20000);
         
-        SSLContext context = SSLContext.getInstance("TLS");
-    	context.init(null, new TrustManager[] { new X509TrustManager() {
-			
-			@Override
-			public X509Certificate[] getAcceptedIssuers() {
-				// TODO Auto-generated method stub
-				return null;
-			}
-			
-			@Override
-			public void checkServerTrusted(X509Certificate[] chain, String authType)
-					throws CertificateException {
-				
-				try {  
-				     KeyStore trustStore = KeyStore.getInstance("JKS");  
-				     String cacertPath = System.getProperty("java.home") + "/lib/security/cacerts"; // Trust store path should be different by system platform.  
-				     trustStore.load(new FileInputStream(cacertPath), "changeit".toCharArray()); // Use default certification validation  
-				       
-				     // Get Trust Manager  
-				     TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());  
-				     tmf.init(trustStore);  
-				     TrustManager[] tms = tmf.getTrustManagers();  
-				     ((X509TrustManager)tms[0]).checkServerTrusted(chain, authType);  
-				       
-			    } catch (KeyStoreException e) {  
-				     e.printStackTrace();  
-			    } catch (NoSuchAlgorithmException e) {  
-				     e.printStackTrace();  
-			    } catch (IOException e) {  
-				     e.printStackTrace();  
-			    }  
-			}
-			
-			@Override
-			public void checkClientTrusted(X509Certificate[] chain, String authType)
-					throws CertificateException {
-				// TODO Auto-generated method stub
-				
-			}
-		}}, null);
-		
-    	httpClient.setHostnameVerifier(new HostnameVerifier() {
-			@Override
-			public boolean verify(String hostname, SSLSession session) {
-				return true;
-			}
-		});
-    	
         log.info(" ** KAC API CALL RESOPNSE METHOD : " + httpClient.getRequestMethod());
         log.info(" ** KAC API CALL RESOPNSE CODE : " + httpClient.getResponseCode());
         log.info(" ** KAC API CALL RESOPNSE STATUS : " + httpClient.getResponseMessage());
@@ -143,8 +106,13 @@ public class PublicDataHttpConnectTeest {
         	sb.append(line.trim());
         }
         
+        
         String resJsonLog = sb.toString();
         log.info(" ** KAC API CALL RES : " + resJsonLog);
+        
+        JAXBContext jaxbContext = JAXBContext.newInstance(HttpResponse.class);
+        
+        
 		log.error("********** TestCase End ********** ");
 	}
 	
@@ -155,3 +123,12 @@ public class PublicDataHttpConnectTeest {
 	}
 
 }
+
+/*
+ * 참고 URL
+ * 1.https://www.mkyong.com/java/jaxb-hello-world-example/
+ * 2.http://www.mimul.com/pebble/default/2010/03/23/1269343140000.html
+ * 3.https://www.ibm.com/support/knowledgecenter/ko/SSAW57_9.0.0/com.ibm.websphere.nd.multiplatform.doc/ae/twbs_jaxbmarshalxml.html
+ * */
+
+
